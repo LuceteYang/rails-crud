@@ -1,0 +1,27 @@
+<h1>수정페이지입니다</h1>
+<div class="container">
+  <div class = "row" style = "margin-top : 50px;">
+    <div class = "col-md-3">
+    </div>
+    <div class = "col-md-6">
+      <form action="/siljae_update/<%= @one.id %>" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">이메일 주소</label>
+          <input name = "email" type="email" class="form-control" id="exampleInputEmail1" placeholder="이메일을 입력하세요">
+        </div>
+          <div class="form-group">
+          <label for="exampleInputEmail1">제목</label>
+          <input name = "title" type="text" class="form-control" id="exampleInputEmail1" value="<%= @one.title %>">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">내용</label>
+          <textarea name = "content" class="form-control" rows="5" id="comment"><%= @one.content %></textarea>
+        </div>
+      
+        <button type="submit" class="btn btn-default">제출</button>
+      </form>
+    </div>
+    <div class = "col-md-3">
+    </div>
+  </div>
+</div>

@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'ruby-opencv'
+
+gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
+
 gem 'mailgun-ruby'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

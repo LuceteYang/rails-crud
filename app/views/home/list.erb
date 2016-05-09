@@ -9,7 +9,8 @@
         <li class="list-group-item">
         <h4 class="list-group-item-heading">Title : <%= p.title %></h4>
         내용 : <%= p.content %> <br>
-        시간 : <%= p.created_at %>
+        시간 : <%= p.created_at %><br>
+        이미지 :<%= p.image %> <img src="<%= p.image %>"><%=image_tag(p.image)%><br>
         <a href="/destroy/<%= p.id %>">[삭제]</a>
         <a href="/update_view/<%= p.id %>">[수정]</a>
         </li>

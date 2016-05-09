@@ -8,27 +8,38 @@ class HomeController < ApplicationController
         @email = params[:email]
         @title = params[:title]
         @content = params[:content]
+        # @image = params[:imagename].path
+        @image = params[:imagename]
+        # @image.save
+        # File.open(Rails.root.join('public', 'uploads', @image.original_filename), 'wb') do |file|
+        #     file.write(@image.read)
+        # end
+        
+        File.open("/public/uploads", "rb") do |file|
+          user.profile_image = file
+        end
         
         # Post란 데이터베이스만들자
         # 이전에 만들었던 디비 칼럼이름
         new_post = Post.new
         new_post.title = @title
         new_post.content = @content
+        new_post.image = @image
         new_post.save
         
-        mg_client = Mailgun::Client.new("key-ce69d5638ef7b89ff45660a4bc75577e")
+        # mg_client = Mailgun::Client.new("key-ce69d5638ef7b89ff45660a4bc75577e")
 
-        message_params =  {
-                           from: 'admin@gmail.com',
-                           to:   @email,
-                           subject: @title,
-                           text:    @content
-                          }
+        # message_params =  {
+        #                   from: 'admin@gmail.com',
+        #                   to:   @email,
+        #                   subject: @title,
+        #                   text:    @content
+        #                   }
         
-        result = mg_client.send_message('sandbox58bb4842b00e4e24a026e6ceef8a6b8b.mailgun.org', message_params).to_h!
+        # result = mg_client.send_message('sandbox58bb4842b00e4e24a026e6ceef8a6b8b.mailgun.org', message_params).to_h!
         
-        message_id = result['id']
-        message = result['message']
+        # message_id = result['id']
+        # message = result['message']
         redirect_to "/list"
     end
     
@@ -41,6 +52,7 @@ class HomeController < ApplicationController
        @one.destroy
        redirect_to "/list"
     end
+    
     def update_view
         @one = Post.find(params[:pid])
     end
